@@ -537,6 +537,10 @@ body {
     display: none !important;
 }
 
+.text-center {
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     .header-content {
         padding: 0 1rem;
@@ -559,11 +563,58 @@ body {
         text-align: center;
     }
 
+    .progress-details {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .form-row {
         grid-template-columns: 1fr;
     }
 
     .form-actions {
         flex-direction: column-reverse;
+    }
+
+    .modal {
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+    }
+
+    .toast-container {
+        top: 0.5rem;
+        right: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .toast {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-icon {
+        font-size: 1.5rem;
+    }
+
+    .app-title {
+        font-size: 1.125rem;
+    }
+
+    .welcome-icon {
+        font-size: 3rem;
+    }
+
+    .welcome-screen h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .medication-actions {
+        justify-content: center;
     }
 }
