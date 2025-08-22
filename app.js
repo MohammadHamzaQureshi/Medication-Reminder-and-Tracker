@@ -332,7 +332,7 @@ class MedTracker {
     }
 
     async requestNotificationPermission() {
-        if ('Notification' in window && 'serviceWorker' in navigator) {
+        if ('Notification' in window) {
             const permission = await Notification.requestPermission();
             if (permission === 'granted') {
                 this.showToast('Notifications enabled! You will be reminded to take your medications.', 'success');
@@ -421,6 +421,7 @@ class MedTracker {
     }
 }
 
+// Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new MedTracker();
 });
