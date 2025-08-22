@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedTracker - Medication Reminder & Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💊%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="Track your medications and never miss a dose">
+    <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="app-icon">💊</span>
+                    MedTracker
+                </h1>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-screen hidden" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">🏥</div>
+                    <h2>Welcome to MedTracker</h2>
+                    <p>Never miss a medication again. Start by adding your first medication below.</p>
+                </div>
+            </div>
+
+            <div class="dashboard" id="dashboard">
+                <section class="progress-section">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Today's Progress</h3>
+                            <div class="progress-stats">
+                                <div class="progress-circle">
+                                    <svg class="progress-ring" width="120" height="120">
+                                        <circle class="progress-ring__circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                                        <circle class="progress-ring__progress" stroke="#10b981" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" id="progressRing"/>
+                                    </svg>
+                                    <div class="progress-text">
+                                        <span id="progressPercent">0%</span>
+                                        <span class="progress-label">Taken</span>
+                                    </div>
+                                </div>
+                                <div class="progress-details">
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="takenCount">0</span>
+                                        <span class="stat-label">Taken</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="totalCount">0</span>
+                                        <span class="stat-label">Total</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="streakCount">0</span>
+                                        <span class="stat-label">Day Streak</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="medications-section">
+                    <div class="section-header">
+                        <h3>Your Medications</h3>
+                        <button class="btn btn-primary" id="addMedBtn">
+                            <span>+</span> Add Medication
+                        </button>
+                    </div>
+                    <div class="medications-grid" id="medicationsGrid"></div>
+                </section>
+            </div>
+        </main>
+
+        <div class="modal-overlay hidden" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Add Medication</h2>
+                    <button class="modal-close" id="modalClose">&times;</button>
+                </div>
+                <form class="modal-body" id="medicationForm">
+                    <div class="form-group">
+                        <label for="medName">Medication Name</label>
+                        <input type="text" id="medName" placeholder="e.g., Vitamin D, Aspirin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="medDosage">Dosage</label>
+                        <input type="text" id="medDosage" placeholder="e.g., 100mg, 1 tablet" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="medTime">Time</label>
+                            <input type="time" id="medTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="medFrequency">Frequency</label>
+                            <select id="medFrequency" required>
+                                <option value="Once daily">Once daily</option>
+                                <option value="Twice daily">Twice daily</option>
+                                <option value="Three times daily">Three times daily</option>
+                                <option value="As needed">As needed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span id="saveText">Save Medication</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="app.js"></script>
+</body>
+</html>
